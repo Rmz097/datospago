@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tarjeta BBVA | Datos</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="card">
+      <img
+        src="https://derechosarco.fundacionbbva.mx/imagenes/logo-bbva.png?x=20200417"
+        alt="BBVA"
+        class="logo-bbva"
+      />
+
+      <div class="type-text">Débito</div>
+
+      <div class="security-elements">
+        <img
+          src="https://wichitafcu.com/application/files/1117/4769/0471/2703078_contactless_card_pay_payment_icon.png"
+          alt="Contactless"
+          class="contactless-icon"
+        />
+
+        <div class="chip"></div>
+      </div>
+
+      <div class="card-data">
+        <div class="copy-wrapper">
+          <div class="clabe-content">
+            <span class="clabe-label">CLABE:</span>
+            <div
+              class="card-number"
+              id="num-tarjeta"
+              data-copy="012180015711961085"
+            >
+              012 180 01571196108 5
+            </div>
+          </div>
+          <button class="btn-copy" onclick="copyData('num-tarjeta', this)">
+            Copiar
+          </button>
+        </div>
+
+        <div class="copy-wrapper">
+          <div class="card-holder" id="nom-titular" data-copy="Jose Ramirez">
+            José Ramírez
+          </div>
+          <button class="btn-copy" onclick="copyData('nom-titular', this)">
+            Copiar
+          </button>
+        </div>
+      </div>
+
+      <div class="design-line"></div>
+      <div class="central-shape"></div>
+
+      <img
+        src="https://i0.wp.com/americassbdc.org/wp-content/uploads/2021/05/Visa-logo-white.png?ssl=1"
+        alt="VISA"
+        class="logo-visa"
+      />
+    </div>
+
+    <script>
+  function copyData(id, btn) {
+    const element = document.getElementById(id);
+    
+    // Si existe data-copy lo usa, si no usa el texto visible
+    const text = element.getAttribute("data-copy") || element.innerText;
+
+    navigator.clipboard.writeText(text).then(() => {
+      const originalText = btn.innerText;
+      btn.innerText = "¡COPIADO!";
+      btn.classList.add("success");
+
+      setTimeout(() => {
+        btn.innerText = originalText;
+        btn.classList.remove("success");
+      }, 10000);
+    });
+  }
+</script>
+  </body>
+</html>
